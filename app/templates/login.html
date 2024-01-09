@@ -1,0 +1,75 @@
+<html lang="en">
+  <head>
+    <link
+      href="{{ url_for('static', filename= 'css/style.css') }}"
+      rel="stylesheet"
+      type="text/css"
+      media="all"
+    />
+    <title>Smart Transformer Monitoring System</title>
+  </head>
+  <body>
+    <div class="session">
+      <div class="left"></div>
+      <form action="/" method="post" class="log-in" autocomplete="off">
+        <h4>
+          Smart
+          <span
+            >Transformer<br />
+            Monitoring</span
+          >
+          System
+        </h4>
+        <p>Welcome back! Log in to your account to view your dashboard</p>
+        <div class="floating-label">
+          <input
+            placeholder="Username"
+            type="text"
+            name="username"
+            id="username"
+            autocomplete="off"
+          />
+          <label for="username">Username:</label>
+        </div>
+        <div class="floating-label">
+          <input
+            placeholder="Password"
+            type="password"
+            name="password"
+            id="password"
+            autocomplete="off"
+          />
+          <label for="password">Password:</label>
+        </div>
+        <button type="submit">Log in</button>
+        <p class="discrete">&copy; G.P.A</p>
+      </form>
+    </div>
+    {% with messages = get_flashed_messages() %} {% if messages %}
+    <ul>
+      {% for message in messages %}
+      <div class="alert_red">
+        <span
+          class="closebtn"
+          onclick="this.parentElement.style.display='none';"
+          >&times;</span
+        >
+        <h3>{{ message }}</h3>
+      </div>
+      {% endfor %}
+    </ul>
+    {% endif %} {% endwith %} {% if users %}
+    <div class="users" style="margin-left: 20%">
+      <h2>Registered Users List</h2>
+      <table style="width: 100%">
+        {% for user in users %}
+        <tr>
+          <td>{{ user[0] }}</td>
+        </tr>
+        {% endfor %}
+      </table>
+    </div>
+    {% endif %}
+  </body>
+
+</html>
